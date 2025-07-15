@@ -52,4 +52,17 @@ public class CompositeTest {
         assertEquals((testValueA*testValueB), e.getValue(), 0.0);
     }
 
+    @Test
+    public void testComplexExpression() {
+        Expression e =
+                new Divider(
+                        new Multiplier(
+                                new Adder(new Constant(3.0), new Constant(5.0)),
+                                new Constant(100.0)
+                        ),
+                        new Adder(new Constant(2.0), new Constant(64.0))
+                );
+        assertEquals(12.1212121212, e.getValue(), 0.00001);
+    }
+
 }
